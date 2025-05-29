@@ -1,9 +1,7 @@
 # Nuxt Minimal Starter
 
-Nuxt3 + vant4 + Tauri + pnpm + Tailwind CSS + Vue3 + TypeScript
+vant4 + Tauri2 + pnpm + Tailwind CSS + Vue3 + TypeScript
 相关文档地址
-
-Nuxt3：https://nuxt.com.cn/docs/getting-started/introduction
 
 Vant4: https://vant-ui.github.io/vant/#/zh-CN/home
 
@@ -23,9 +21,12 @@ pnpm install
 ```bash
 pnpm tauri dev
 ```
-移动端安卓启动
+移动端安卓初始化
 ```bash
 pnpm tauri android init
+```
+移动端安卓启动
+```bash
 pnpm tauri android dev
 ```
 构建
