@@ -1,21 +1,36 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import { open } from '@tauri-apps/plugin-dialog';
+import {size} from "@tauri-apps/plugin-fs";
+import {showDialog} from "vant";
+import {pictureDir} from "@tauri-apps/api/path";
+
+
+const openFile = async () => {
+  const defaultPath = await pictureDir();
+  // Open a dialog
+  const file = await open({
+    multiple: false,
+    directory: false,
+    defaultPath
+  })
+  console.log(file);
+  if (file) {
+    let fileSize = 0;
+    try {
+      fileSize = await size(file);
+    } catch (e) {
+      await showDialog({ message: 'get file size erro: ' + e });
+    }
+   await showDialog({message: 'fileSize' + fileSize + ' bytes'});
+  }
+}
+
+
 
 </script>
 
 <template>
-
-
-  <div>12</div>
-  <div>321</div>
-  <div>312</div>
-  <div>312</div>
-  <div>312</div>
-  <van-button type="primary">主要按钮</van-button>
-  <van-button type="success">成功按钮</van-button>
-  <van-button type="default">默认按钮</van-button>
-  <van-button type="danger">危险按钮</van-button>
-  <van-button type="warning">警告按钮</van-button>
+  <van-button style="margin: 100px" type="primary" @click="openFile">open</van-button>
 </template>
 
 <style scoped>

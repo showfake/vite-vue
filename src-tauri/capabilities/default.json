@@ -2,9 +2,59 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["main"],
+  "windows": [
+    "main"
+  ],
   "permissions": [
     "core:default",
-    "opener:default"
+    "opener:default",
+    "dialog:default",
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        {
+          "path": "$APPDATA"
+        },
+        {
+          "path": "$APPDATA/**"
+        },
+        {
+          "path": "$PICTURE"
+        },
+        {
+          "path": "$PICTURE/**"
+        },
+        {
+          "path": "$VIDEO"
+        },
+        {
+          "path": "$VIDEO/**"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-exists",
+      "allow": [
+        {
+          "path": "$APPDATA"
+        },
+        {
+          "path": "$APPDATA/**"
+        },
+        {
+          "path": "$PICTURE"
+        },
+        {
+          "path": "$PICTURE/**"
+        },
+        {
+          "path": "$VIDEO"
+        },
+        {
+          "path": "$VIDEO/**"
+        }
+      ]
+    },
+    "fs:allow-size"
   ]
 }
